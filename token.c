@@ -9,7 +9,7 @@
 
 char **tokenn(char *ptr)
 {
-	char *usr_cmd = NULL;
+	char **usr_cmd = NULL;
 	size_t index = 0;
 	int size;
 	char *token = NULL;
@@ -19,7 +19,7 @@ char **tokenn(char *ptr)
 
 	for (index = 0; ptr[index]; index++)
 	{
-		if (ptr[i] == ' ')
+		if (ptr[index] == ' ')
 			size++;
 	}
 

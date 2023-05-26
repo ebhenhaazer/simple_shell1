@@ -12,11 +12,11 @@ int _val_path(char **env, char **arg)
 {
 	char *token = NULL, *path_r = NULL, *path_a = NULL;
 	size_t val_path, length;
-	struct status stat_ptr;
+	struct stat stat_ptr;
 
-	if (status(*arg, &stat_ptr) == 0)
+	if (stat(*arg, &stat_ptr) == 0)
 		return (-1);
-	path_r = _get_path(env);
+	path_r = _getpath(env);
 
 	if (!path_r)
 		return (-1);

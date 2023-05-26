@@ -15,7 +15,7 @@ int main_arg(int ac, char **av, char **env)
 	while (1)
 	{
 		errno = 0;
-		line = _getl_cmd();
+		line = getl_cmd();
 		if (line == NULL && errno == 0)
 			return (0);
 		if (line)
@@ -24,12 +24,12 @@ int main_arg(int ac, char **av, char **env)
 			com = tokenn(line);
 			if (!com)
 				free(line);
-			if !(_strcmp(com[0], "env"))
-				_getenv(env);
+			if (!_strcmp(com[0], "env"))
+				_getenviron(env);
 			else
 			{
-				path = _values_path(&com[0], env);
-				status = _fork_fun(com, av, env, line, path, pathv);
+				path = _val_path(&com[0], env);
+				stat = fork_s(com, av, env, line, path, pathv);
 				if (stat == 200)
 				{
 					free(line);

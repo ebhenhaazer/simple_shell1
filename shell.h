@@ -11,8 +11,8 @@
 #include <errno.h>
 
 int _putchar(char c);
-char *_strcat(char *destination, char *source);
-char _strlen(char *s);
+char *_strcat(char *destination, char *s);
+int _strlen(char *s);
 char *_getpath(char **env);
 int fork_s(char **args, char *argv[], char **env, char *l, int pid, int ch);
 int lsh_cd(char **args);
