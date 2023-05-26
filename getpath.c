@@ -7,14 +7,14 @@
  */
 char *_getpath(char **env)
 {
-	char *p = NULL
+	char *p = NULL;
 	size_t i = 0;
 
-	var = 0;
+	size_t var = 0;
 
-	c = 5;
+	size_t c = 5;
 
-	for (i = 0; _strcompare(env[i], "PATH=", 5); i++)
+	for (i = 0; _strncmp(env[i], "PATH=", 5); i++)
 		if (env[i] == NULL)
 			return (NULL);
 	for (c = 5; env[i][var]; c++, var++)

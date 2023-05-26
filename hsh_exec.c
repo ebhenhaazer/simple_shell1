@@ -60,11 +60,13 @@ int lsh_ctrld(char **args)
  */
 int lsh_help(char **args)
 {
+	int index;
+
 	printf("Elijah Mwathi and  Jude Kimathi\n");
 	printf("Call +254-725-help, for help\n");
 	(void)args;
 
-	for (int index = 0; index < lsh_builtinnums(); index++)
+	for (index = 0; index < lsh_builtinnums(); index++)
 		printf(" %s\n", string_builtin[index]);
 	return (1);
 }
@@ -93,24 +95,28 @@ int lsh_exit(char **args)
  */
 int fork_s(char **args, char *argv[], char **env, char *l, int pid, int ch)
 {
-	int st;
+	int st, index;
 	pid_t child;
 	char *f = "%s: %d: %s: not found\n";
 
-	if (arg[0] == NULL)
+	if (args[0] == NULL)
 		return (1);
-	for (int index = 0; index < lsh_builtinnums(); index++)
+	for (index = 0; index < lsh_builtinnums(); index++)
 		if (_strcmp(args[0], string_builtin[index]) == 0)
 			return (builtin_f[index](args));
 	child = fork();
 	if (child == 0)
+	{
 		if (execve(args[0], args, env) == -1)
-			fprintf(stderr, format, argv[0], pid, args[0]);
+		{
+			fprintf(stderr, f, argv[0], pid, args[0]);
 			if (!ch)
 				free(args[0]);
 			free(args);
 			free(l);
 			exit(errno);
+		}
+	}
 	else
 		wait(&st);
 		return (st);

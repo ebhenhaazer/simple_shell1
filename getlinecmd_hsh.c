@@ -11,8 +11,10 @@ char *_getl_cmd(void)
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
-	if (getline(&usr_c, &line, stdin) == -1)
+	if (getline(&user_c, &line, stdin) == -1)
+	{
 		free(line);
 		return (NULL);
+	}
 	return (line);
 }
