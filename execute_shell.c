@@ -91,7 +91,7 @@ int lsh_ctrld(char **args)
 }
 
 /**
- *_fork_fun - foo that create a fork.
+ *_fork_s - foo that create a fork.
  *@arg: Command and values path.
  *@av: Has the name of our program.
  *@env: Environment
