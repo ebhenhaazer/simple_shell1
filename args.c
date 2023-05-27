@@ -15,7 +15,11 @@ int main_arg(int ac, char **av, char **env)
 	while (1)
 	{
 		errno = 0;
+<<<<<<< HEAD
 		line = _getl_cmd();
+=======
+		line = _getline();
+>>>>>>> 58b5c7b52ac063fc87265f886f5e350b7cf52dca
 		if (line == NULL && errno == 0)
 			return (0);
 		if (line)
