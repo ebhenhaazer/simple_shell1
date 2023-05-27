@@ -12,6 +12,6 @@ void _getenviron(char **env)
 	{
 		write(STDOUT_FILENO, env[r], _strlen(env[r]));
 		write(STDOUT_FILENO, "\n", 1);
-		r += 1;
+		r++;
 	}
 }
