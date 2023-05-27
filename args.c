@@ -1,56 +1,51 @@
 #include "shell.h"
 /**
- * main_arg - Argument functions
- * @ac: Number of arguments
+ * main - Main arguments functions
+ * @ac: Count of argumnents
  * @av: Arguments
- * @env: The environment
- *
- * Return: Always 0
+ * @env: Environment
+ * Return: _exit = 0.
  */
-int main_arg(int ac, char **av, char **env)
+int main(int ac, char **av, char **env)
 {
-	int path = 0, stat = 0, pathv = 0;
-	char *line = NULL, **com = NULL;
+	int pathValue = 0, status = 0, is_path = 0;
+	char *line = NULL, **commands = NULL;
 	(void)ac;
 	while (1)
 	{
 		errno = 0;
-<<<<<<< HEAD
-		line = _getl_cmd();
-=======
 		line = _getline();
->>>>>>> 58b5c7b52ac063fc87265f886f5e350b7cf52dca
 		if (line == NULL && errno == 0)
 			return (0);
 		if (line)
 		{
-			pathv++;
-			com = tokenn(line);
-			if (!com)
+			pathValue++;
+			commands = tokenn(line);
+			if (!commands)
 				free(line);
-			if (!_strcmp(com[0], "env"))
+			if (!_strcmp(commands[0], "env"))
 				_getenviron(env);
 			else
 			{
-				path = _val_path(&com[0], env);
-				stat = _fork_s(com, av, env, line, path, pathv);
-				if (stat == 200)
-				{
-					free(line);
-					return (0);
-				}
-				if (path == 0)
-					free(com[0]);
+				is_path = _val_path(&commands[0], env);
+				status = _fork_s(commands, av, env, line, pathValue, is_path);
+					if (status == 200)
+					{
+						free(line);
+						return (0);
+					}
+				if (is_path == 0)
+					free(commands[0]);
 			}
-			free(com);
+			free(commands);
 		}
 		else
 		{
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
-			exit(stat);
+			exit(status);
 		}
 		free(line);
 	}
-	return (stat);
+	return (status);
 }
