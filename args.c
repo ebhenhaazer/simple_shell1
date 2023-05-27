@@ -15,7 +15,7 @@ int main_arg(int ac, char **av, char **env)
 	while (1)
 	{
 		errno = 0;
-		line = getl_cmd();
+		line = _getline();
 		if (line == NULL && errno == 0)
 			return (0);
 		if (line)

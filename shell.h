@@ -29,5 +29,6 @@ extern char **environ;
 char **tokenn(char *ptr);
 int _val_path(char **env, char **arg);
 void _exit_command(char **args, char *lineptr, int _exit);
+char *_getline(void);
 
 #endif
