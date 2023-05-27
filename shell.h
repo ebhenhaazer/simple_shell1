@@ -13,8 +13,9 @@
 int _putchar(char c);
 char *_strcat(char *destination, char *s);
 int _strlen(char *s);
+int _fork_s(char **args, char **argv, char **env, char *line, int p, int ch);
+char *_getl_cmd(void);
 char *_getpath(char **env);
-int lsh_cd(char **args);
 int lsh_ctrld(char **args);
 int lsh_help(char **args);
 int lsh_exit(char **args);

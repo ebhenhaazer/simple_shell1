@@ -15,7 +15,7 @@ int main_arg(int ac, char **av, char **env)
 	while (1)
 	{
 		errno = 0;
-		line = getl_cmd();
+		line = _getl_cmd();
 		if (line == NULL && errno == 0)
 			return (0);
 		if (line)
@@ -29,7 +29,7 @@ int main_arg(int ac, char **av, char **env)
 			else
 			{
 				path = _val_path(&com[0], env);
-				stat = fork_s(com, av, env, line, path, pathv);
+				stat = _fork_s(com, av, env, line, path, pathv);
 				if (stat == 200)
 				{
 					free(line);
